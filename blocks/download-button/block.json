@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "templatesell-gated-downloads/download-button",
+	"version": "1.0.0",
+	"title": "Gated Download",
+	"category": "widgets",
+	"icon": "download",
+	"description": "Insert a gated download button. Visitors fill a short form before the file is delivered.",
+	"keywords": [ "download", "lead", "gate", "form", "opt-in" ],
+	"textdomain": "templatesell-gated-downloads",
+	"supports": {
+		"html": false,
+		"align": [ "left", "center", "right" ]
+	},
+	"attributes": {
+		"gateId": {
+			"type": "number",
+			"default": 0
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

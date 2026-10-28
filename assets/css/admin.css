@@ -1,0 +1,879 @@
+/* =====================================================================
+   Gated Downloads — Admin UI (card-based layout)
+   ===================================================================== */
+
+.tslgd-wrap {
+	max-width: 1100px;
+}
+
+.tslgd-page-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.tslgd-page-title .dashicons {
+	color: #2563eb;
+	font-size: 26px;
+	width: 26px;
+	height: 26px;
+}
+
+/* Cards */
+.tslgd-card {
+	background: #fff;
+	border: 1px solid #e2e4e7;
+	border-radius: 10px;
+	padding: 22px 24px;
+	margin: 18px 0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.tslgd-card h2 {
+	margin-top: 0;
+	font-size: 16px;
+	border-bottom: 1px solid #f0f0f1;
+	padding-bottom: 12px;
+	margin-bottom: 16px;
+}
+
+/* Records toolbar */
+.tslgd-records-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 14px;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tslgd-records-title {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 700;
+	color: #1d2327;
+	line-height: 1.2;
+}
+.tslgd-records-title .dashicons {
+	width: 22px;
+	height: 22px;
+	font-size: 22px;
+	color: #2563eb;
+}
+
+.tslgd-records-toolbar .button .dashicons {
+	vertical-align: text-bottom;
+	font-size: 16px;
+	height: 16px;
+	width: 16px;
+}
+
+/* Fields table (settings) */
+.tslgd-fields-table {
+	max-width: 480px;
+	margin-top: 12px;
+}
+
+.tslgd-fields-table th,
+.tslgd-fields-table td {
+	padding: 10px 12px;
+}
+
+.tslgd-fields-table td:nth-child(2),
+.tslgd-fields-table td:nth-child(3),
+.tslgd-fields-table th:nth-child(2),
+.tslgd-fields-table th:nth-child(3) {
+	text-align: center;
+	width: 80px;
+}
+
+/* Metabox */
+.tslgd-metabox {
+	margin: 0;
+	border: none;
+	box-shadow: none;
+	padding: 4px 0;
+}
+
+.tslgd-field-row {
+	margin-bottom: 18px;
+}
+
+.tslgd-field-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.tslgd-source-toggle label {
+	margin-right: 20px;
+}
+
+.tslgd-file-preview {
+	background: #f6f7f7;
+	border: 1px solid #e2e4e7;
+	border-radius: 6px;
+	padding: 8px 12px;
+	margin: 0 0 8px;
+	font-family: monospace;
+	font-size: 13px;
+	color: #50575e;
+	min-height: 18px;
+}
+
+.tslgd-remove-file {
+	color: #b32d2e;
+	margin-left: 8px;
+}
+
+/* Shortcode chip */
+.tslgd-shortcode {
+	display: inline-block;
+	background: #f0f6ff;
+	border: 1px solid #cfe0ff;
+	border-radius: 6px;
+	padding: 4px 10px;
+	color: #1d4ed8;
+	font-size: 13px;
+	user-select: all;
+}
+
+/* Click-to-copy shortcode (list table + metabox) */
+.tslgd-copy {
+	cursor: pointer;
+	user-select: none;
+	transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.tslgd-copy::after {
+	content: "\f105"; /* dashicons-admin-page (copy-ish) */
+	font-family: dashicons;
+	font-size: 14px;
+	line-height: 1;
+	vertical-align: -2px;
+	margin-left: 6px;
+	opacity: 0.6;
+}
+
+.tslgd-copy:hover {
+	background: #e0edff;
+	border-color: #9dc2ff;
+}
+
+.tslgd-copy:focus {
+	outline: 2px solid #2563eb;
+	outline-offset: 1px;
+}
+
+.tslgd-copy.tslgd-copied {
+	background: #e7f7ec;
+	border-color: #86e0a3;
+	color: #15803d;
+}
+
+.tslgd-copy.tslgd-copied::after {
+	content: "\f147"; /* dashicons-yes */
+	opacity: 1;
+}
+
+/* Keep the list-table Shortcode column comfortably sized */
+.column-tslgd_shortcode {
+	width: 22%;
+}
+
+/* =====================================================================
+   "How it works" flow + empty state (Leads screen onboarding)
+   ===================================================================== */
+.tslgd-flow {
+	display: grid;
+	grid-template-columns: repeat( 4, 1fr );
+	gap: 0;
+	margin: 18px 0;
+	padding: 26px 10px 22px;
+	background: linear-gradient( 180deg, #ffffff, #f6f8fb );
+	border: 1px solid #e2e4e7;
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.04 );
+}
+
+.tslgd-flow-step {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 0 16px;
+}
+
+.tslgd-flow-step:not( :last-child )::after {
+	content: "";
+	position: absolute;
+	top: 44px;
+	right: -1px;
+	width: 100%;
+	height: 2px;
+	background: repeating-linear-gradient( 90deg, #d5dae0 0 7px, transparent 7px 13px );
+	z-index: 0;
+}
+
+.tslgd-flow-art {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 88px;
+	height: 88px;
+	margin-bottom: 12px;
+	border-radius: 20px;
+	background: #fff;
+	border: 1px solid #e2e4e7;
+	box-shadow: 0 8px 20px -14px rgba( 37, 99, 235, 0.6 );
+}
+
+.tslgd-flow-art svg {
+	width: 48px;
+	height: 48px;
+}
+
+.tslgd-flow-num {
+	position: absolute;
+	top: -8px;
+	left: -8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: #2563eb;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.tslgd-flow-title {
+	font-size: 13px;
+	font-weight: 700;
+	margin: 0 0 4px;
+	color: #1e1e1e;
+}
+
+.tslgd-flow-desc {
+	font-size: 12px;
+	line-height: 1.5;
+	color: #646970;
+	margin: 0;
+}
+
+.tslgd-flow-art svg .tslgd-fill { fill: rgba( 37, 99, 235, 0.1 ); }
+.tslgd-flow-art svg .tslgd-stroke { stroke: #2563eb; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.tslgd-flow-art svg .tslgd-accent { fill: #2563eb; }
+
+.tslgd-empty {
+	text-align: center;
+	padding: 20px 20px 6px;
+}
+
+.tslgd-empty-title {
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0 0 6px;
+}
+
+.tslgd-empty-text {
+	max-width: 460px;
+	margin: 0 auto 16px;
+	color: #646970;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+@media ( max-width: 960px ) {
+	.tslgd-flow {
+		grid-template-columns: repeat( 2, 1fr );
+		gap: 24px 0;
+	}
+	.tslgd-flow-step:not( :last-child )::after { display: none; }
+}
+
+@media ( max-width: 600px ) {
+	.tslgd-flow {
+		grid-template-columns: 1fr;
+		gap: 22px 0;
+	}
+}
+
+/* =====================================================================
+   Pro upsell — inline card (rendered inside the plugin pages)
+   ===================================================================== */
+.tslgd-upsell {
+	border: 1px solid #cfe0ff;
+	background: linear-gradient( 180deg, #f7faff, #fff );
+}
+
+.tslgd-upsell-head {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+}
+
+.tslgd-upsell-ic {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 11px;
+	background: rgba( 37, 99, 235, 0.1 );
+	color: #2563eb;
+	font-size: 22px;
+	flex: 0 0 auto;
+}
+
+.tslgd-upsell-intro {
+	flex: 1;
+	min-width: 220px;
+}
+
+.tslgd-upsell-intro h2 {
+	margin: 0 0 3px;
+	padding: 0;
+	border: 0;
+	font-size: 16px;
+}
+
+.tslgd-upsell-intro p {
+	margin: 0;
+	color: #50575e;
+	font-size: 13px;
+}
+
+.tslgd-upsell-feats {
+	display: grid;
+	grid-template-columns: repeat( 3, 1fr );
+	gap: 8px 18px;
+	margin: 16px 0 0;
+	padding: 16px 0 0;
+	border-top: 1px solid #eef2f7;
+}
+
+.tslgd-upsell-feats li {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin: 0;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+.tslgd-upsell-feats .dashicons-yes {
+	color: #16a34a;
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+	flex: 0 0 auto;
+}
+
+/* Break the list-table upsell out of the constrained bottom tablenav. */
+.tslgd-list-upsell {
+	clear: both;
+	float: none;
+	width: 100%;
+	max-width: 1100px;
+	height: auto;
+	margin: 4px 0 12px;
+}
+
+.tslgd-list-upsell .tslgd-upsell {
+	margin: 0;
+}
+
+@media ( max-width: 782px ) {
+	.tslgd-upsell-feats {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media ( max-width: 480px ) {
+	.tslgd-upsell-feats {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* =====================================================================
+   Pro upsell — Upgrade to Pro page
+   ===================================================================== */
+.tslgd-upgrade {
+	max-width: 1080px;
+}
+
+.tslgd-up-hero {
+	background: linear-gradient( 135deg, #111827, #1e3a8a );
+	color: #fff;
+	border-radius: 14px;
+	padding: 34px 34px 30px;
+	margin: 18px 0 24px;
+	box-shadow: 0 18px 40px -22px rgba( 30, 58, 138, 0.8 );
+}
+
+.tslgd-up-badge {
+	display: inline-block;
+	background: rgba( 255, 255, 255, 0.14 );
+	color: #bfdbfe;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 4px 12px;
+	border-radius: 999px;
+	margin-bottom: 14px;
+}
+
+.tslgd-up-hero h1 {
+	color: #fff;
+	font-size: 28px;
+	margin: 0 0 8px;
+	padding: 0;
+}
+
+.tslgd-up-hero p {
+	color: rgba( 255, 255, 255, 0.78 );
+	font-size: 15px;
+	max-width: 620px;
+	margin: 0 0 18px;
+}
+
+.tslgd-up-actions {
+	margin: 0;
+}
+
+.tslgd-up-actions .button-hero {
+	margin-right: 10px;
+}
+
+.tslgd-up-grid {
+	display: grid;
+	grid-template-columns: repeat( 3, 1fr );
+	gap: 16px;
+	margin-bottom: 26px;
+}
+
+.tslgd-up-card {
+	background: #fff;
+	border: 1px solid #e2e4e7;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.04 );
+	transition: transform 0.16s, border-color 0.16s;
+}
+
+.tslgd-up-card:hover {
+	transform: translateY( -3px );
+	border-color: #2563eb;
+}
+
+.tslgd-up-ic {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 11px;
+	background: rgba( 37, 99, 235, 0.1 );
+	color: #2563eb;
+	font-size: 24px;
+	margin-bottom: 12px;
+}
+
+.tslgd-up-card h3 {
+	margin: 0 0 5px;
+	font-size: 15px;
+}
+
+.tslgd-up-card p {
+	margin: 0;
+	color: #646970;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.tslgd-up-compare .tslgd-up-col {
+	text-align: center;
+	width: 90px;
+}
+
+.tslgd-up-compare .tslgd-up-pro {
+	background: rgba( 37, 99, 235, 0.06 );
+}
+
+.tslgd-up-yes {
+	color: #16a34a;
+}
+
+.tslgd-up-no {
+	color: #a7aaad;
+}
+
+.tslgd-up-foot {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+	margin: 16px 0 0;
+}
+
+.tslgd-up-note {
+	color: #646970;
+	font-size: 13px;
+}
+
+@media ( max-width: 782px ) {
+	.tslgd-up-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media ( max-width: 560px ) {
+	.tslgd-up-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ---------- Per-form config meta box (Form Fields & Behavior) ---------- */
+.tslgd-formcfg {
+	padding: 0;
+}
+
+.tslgd-formcfg-card {
+	padding: 16px 18px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.tslgd-formcfg-card:last-child {
+	border-bottom: 0;
+}
+
+.tslgd-formcfg-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	margin-bottom: 6px;
+	cursor: pointer;
+}
+
+.tslgd-formcfg-card .description {
+	margin: 0 0 12px;
+}
+
+/* Field builder list */
+.tslgd-fb-list {
+	margin: 8px 0 0;
+	padding: 0;
+	list-style: none;
+	max-width: 560px;
+}
+
+.tslgd-fb-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 9px 12px;
+	margin: 0 0 6px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+}
+
+.tslgd-fb-handle {
+	color: #a7aaad;
+	cursor: grab;
+}
+
+.tslgd-fb-handle:active {
+	cursor: grabbing;
+}
+
+.tslgd-fb-enable {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	flex: 1;
+	min-width: 0;
+}
+
+.tslgd-fb-name {
+	font-weight: 600;
+}
+
+.tslgd-fb-note {
+	color: #787c82;
+	font-style: normal;
+	font-size: 12px;
+}
+
+.tslgd-fb-req {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #50575e;
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.tslgd-fb-row.ui-sortable-helper {
+	box-shadow: 0 4px 14px rgba( 0, 0, 0, 0.12 );
+}
+
+.tslgd-fb-placeholder {
+	height: 40px;
+	margin: 0 0 6px;
+	border: 1px dashed #c3c4c7;
+	border-radius: 6px;
+	background: #f6f7f7;
+}
+
+/* Message/notification field groups */
+.tslgd-formcfg-fields .tslgd-field-label {
+	display: block;
+	font-weight: 600;
+	margin: 0 0 4px;
+}
+
+.tslgd-formcfg-fields p {
+	margin: 0 0 14px;
+}
+
+/* Visually disable a card whose override toggle is off (inputs still post; the
+   resolver ignores them until the toggle is on). */
+[data-section][data-disabled] {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Leads list — Details column */
+.tslgd-lead-extra {
+	display: inline-block;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------
+ * 1.1.0 — onboarding, checklist, stat tiles, growth prompts
+ * ---------------------------------------------------------------------- */
+
+/* Welcome notice */
+.tslgd-welcome { border-left-color: #2563eb; padding: 6px 12px 10px; }
+.tslgd-welcome h3 { margin: 10px 0 4px; }
+.tslgd-welcome .tslgd-welcome-hide { margin-left: 8px; color: #646970; text-decoration: none; }
+.tslgd-welcome .tslgd-welcome-hide:hover { color: #b32d2e; }
+
+/* Setup checklist */
+.tslgd-checklist { padding: 20px 22px; }
+.tslgd-checklist-head { display: flex; align-items: center; justify-content: space-between; }
+.tslgd-checklist-head h2 { margin: 0; font-size: 16px; }
+.tslgd-checklist-count { font-size: 12px; font-weight: 600; color: #646970; }
+.tslgd-progress { height: 8px; border-radius: 999px; background: #eef1f6; overflow: hidden; margin: 12px 0 16px; }
+.tslgd-progress span { display: block; height: 100%; border-radius: 999px; background: linear-gradient( 90deg, #2563eb, #60a5fa ); transition: width .4s ease; }
+.tslgd-checklist-items { margin: 0; }
+.tslgd-checklist-items li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #f0f0f1; }
+.tslgd-checklist-items li:first-child { border-top: 0; }
+.tslgd-check { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; border: 2px solid #d5d9e0; color: #fff; font-size: 12px; font-weight: 700; flex: 0 0 auto; }
+.tslgd-checklist-items li.is-done .tslgd-check { background: #16a34a; border-color: #16a34a; }
+.tslgd-check-label { flex: 1 1 auto; font-weight: 600; }
+.tslgd-checklist-items li.is-done .tslgd-check-label { color: #646970; text-decoration: line-through; }
+.tslgd-checklist-demo { margin: 14px 0 0; font-size: 13px; color: #646970; }
+
+/* Stat tiles */
+.tslgd-stats { display: grid; grid-template-columns: repeat( 4, 1fr ); gap: 14px; margin: 0 0 16px; }
+.tslgd-stat { background: #fff; border: 1px solid #e2e4e9; border-radius: 12px; padding: 16px 18px; box-shadow: 0 8px 24px -20px rgba( 0, 0, 0, .5 ); }
+.tslgd-stat-n { display: block; font-size: 26px; font-weight: 800; letter-spacing: -.02em; color: #1d2327; line-height: 1.1; }
+.tslgd-stat-file { font-size: 15px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tslgd-stat-l { display: block; font-size: 12.5px; color: #646970; margin-top: 4px; }
+@media ( max-width: 782px ) { .tslgd-stats { grid-template-columns: 1fr 1fr; } }
+
+/* Contextual upsell */
+.tslgd-upsell-trigger { position: relative; padding: 22px 24px; border-left: 4px solid #2563eb; background: linear-gradient( 100deg, #f5f8ff, #fff ); }
+.tslgd-upsell-trigger h2 { margin: 0 0 6px; font-size: 18px; }
+.tslgd-upsell-trigger p { margin: 0 0 14px; color: #3c434a; max-width: 760px; }
+.tslgd-upsell-x { position: absolute; top: 10px; right: 12px; border: 0; background: transparent; font-size: 20px; line-height: 1; color: #9aa1a9; cursor: pointer; }
+.tslgd-upsell-x:hover { color: #1d2327; }
+
+/* Leads header: title (left) · search + export (right) on one row */
+.tslgd-leads-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.tslgd-leads-head .tslgd-records-title { margin: 0 auto 0 0; }
+.tslgd-leads-head .tslgd-leads-search { margin: 0; }
+.tslgd-leads-head .search-box { float: none; position: static; margin: 0; display: inline-flex; align-items: center; gap: 6px; }
+.tslgd-leads-head .search-box input[type="search"] { margin: 0; }
+.tslgd-export-btn { display: inline-flex; align-items: center; gap: 4px; }
+.tslgd-export-btn .dashicons { font-size: 16px; height: 16px; width: 16px; }
+@media ( max-width: 700px ) {
+	.tslgd-leads-head .tslgd-records-title { margin: 0; width: 100%; }
+	.tslgd-leads-head .tslgd-leads-search { flex: 1 1 auto; }
+}
+
+/* Categories (taxonomy) screen — card-style the add-form and the term list */
+body.taxonomy-tslgd_category #col-container { margin-top: 12px; }
+body.taxonomy-tslgd_category #col-left .form-wrap,
+body.taxonomy-tslgd_category #col-right .col-wrap {
+	background: #fff;
+	border: 1px solid #e2e4e7;
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.04 );
+	box-sizing: border-box;
+}
+body.taxonomy-tslgd_category #col-left .form-wrap { padding: 6px 22px 22px; }
+body.taxonomy-tslgd_category #col-left .form-wrap h2 {
+	border-bottom: 1px solid #f0f0f1;
+	padding-bottom: 12px;
+	margin: 12px 0 16px;
+}
+body.taxonomy-tslgd_category #col-right .col-wrap { padding: 6px 8px; }
+body.taxonomy-tslgd_category #col-right .wp-list-table { border: 0; box-shadow: none; }
+body.taxonomy-tslgd_category #col-right .wp-list-table thead th { border-bottom: 1px solid #f0f0f1; }
+
+/* Trim the extra gap above the inline "Upgrade to Pro" card under the files list */
+body.post-type-tslgd_file .tablenav.bottom { height: auto; }
+
+/* -------------------------------------------------------------------------
+ * Conversion surfaces — sync nudge, locked field teasers, automation page
+ * ---------------------------------------------------------------------- */
+
+/* Conversion analytics — files-list column + leads-page funnel strip */
+.tslgd-perf-leads { font-weight: 600; color: #1d2327; }
+.tslgd-perf-conv { color: #50575e; font-size: 12px; }
+.tslgd-perf-none { color: #9aa1a9; font-style: italic; }
+.tslgd-funnel-strip {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 10px 0 16px;
+	padding: 9px 14px;
+	background: #f6f7f7;
+	border: 1px solid #e2e4e7;
+	border-radius: 8px;
+	color: #3c434a;
+	font-size: 13px;
+}
+.tslgd-funnel-strip .dashicons { color: #2563eb; font-size: 18px; width: 18px; height: 18px; }
+.tslgd-funnel-strip a { font-weight: 600; text-decoration: none; }
+
+/* Contextual Pro tips in the file metabox (shareable-link risk + subscribe sync) */
+.tslgd-metabox-pro-tips {
+	margin: 14px 0 4px;
+	padding: 10px 14px;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-left: 3px solid #94a3b8;
+	border-radius: 8px;
+}
+.tslgd-pro-tip {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	margin: 0;
+	padding: 5px 0;
+	color: #50575e;
+	font-size: 12.5px;
+	line-height: 1.5;
+}
+.tslgd-pro-tip + .tslgd-pro-tip { border-top: 1px dashed #e2e8f0; }
+.tslgd-pro-tip .dashicons { flex: 0 0 auto; font-size: 16px; width: 16px; height: 16px; margin-top: 2px; color: #94a3b8; }
+.tslgd-pro-tip strong { color: #1d2327; }
+.tslgd-pro-tip a { text-decoration: none; font-weight: 600; white-space: nowrap; }
+
+/* "Cost of not upgrading" sync nudge (leads page) */
+.tslgd-sync-nudge {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	background: #fffaf0;
+	border: 1px solid #f5d9a8;
+	border-left: 4px solid #f0b849;
+	border-radius: 10px;
+	padding: 12px 44px 12px 16px;
+	margin: 0 0 16px;
+}
+.tslgd-sync-ic { color: #d98a0b; font-size: 20px; width: 20px; height: 20px; flex: 0 0 auto; }
+.tslgd-sync-copy { margin: 0; flex: 1 1 auto; color: #3c434a; font-size: 13.5px; line-height: 1.5; }
+.tslgd-sync-cta { flex: 0 0 auto; }
+.tslgd-sync-x { position: absolute; top: 8px; right: 12px; border: 0; background: transparent; font-size: 18px; line-height: 1; color: #b0895a; cursor: pointer; }
+.tslgd-sync-x:hover { color: #7a5a2e; }
+@media ( max-width: 700px ) { .tslgd-sync-nudge { flex-wrap: wrap; } }
+
+/* Locked "Pro field type" teaser rows in the Form Fields metabox */
+.tslgd-fb-row.tslgd-fb-locked-head {
+	border: 0;
+	background: transparent;
+	padding: 12px 0 2px;
+	margin: 6px 0 0;
+}
+.tslgd-fb-locked-label {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #8a6d3b;
+}
+.tslgd-fb-row.tslgd-fb-locked {
+	background: #fbfbfc;
+	border-style: dashed;
+	opacity: .92;
+}
+.tslgd-fb-row.tslgd-fb-locked .tslgd-fb-handle { color: #c3c4c7; cursor: default; }
+.tslgd-fb-lockic { color: #b0895a; font-size: 15px; width: 15px; height: 15px; }
+.tslgd-fb-row.tslgd-fb-locked .tslgd-fb-name { color: #646970; font-weight: 600; }
+.tslgd-fb-probadge {
+	margin-left: auto;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: .04em;
+	color: #fff;
+	background: #f0b849;
+	border-radius: 999px;
+	padding: 2px 8px;
+}
+.tslgd-fb-row.tslgd-fb-locked-cta { border: 0; background: transparent; padding: 8px 0 2px; }
+.tslgd-fb-row.tslgd-fb-locked-cta a { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; text-decoration: none; }
+.tslgd-fb-row.tslgd-fb-locked-cta .dashicons { font-size: 16px; width: 16px; height: 16px; }
+
+/* Automation teaser screen */
+.tslgd-auto-intro { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; border-left: 4px solid #2563eb; }
+.tslgd-auto-intro h2 { border: 0; margin: 0 0 4px; padding: 0; }
+.tslgd-auto-intro p { margin: 0; color: #3c434a; max-width: 640px; }
+.tslgd-auto-intro > a { margin-left: auto; }
+.tslgd-auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tslgd-auto-card { margin: 0; }
+.tslgd-auto-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.tslgd-auto-ic { color: #2563eb; font-size: 22px; width: 22px; height: 22px; }
+.tslgd-auto-head h3 { margin: 0; font-size: 15px; }
+.tslgd-auto-pro { margin-left: auto; font-size: 10px; font-weight: 800; letter-spacing: .04em; color: #fff; background: #f0b849; border-radius: 999px; padding: 2px 8px; }
+.tslgd-auto-desc { margin: 0 0 14px; color: #50575e; font-size: 13px; }
+.tslgd-auto-flabel { display: block; font-weight: 600; font-size: 12.5px; margin: 0 0 5px; color: #646970; }
+.tslgd-auto-field { position: relative; margin: 0 0 14px; }
+.tslgd-auto-field input { width: 100%; background: #f6f7f7; }
+.tslgd-auto-field .dashicons { position: absolute; top: 50%; right: 8px; transform: translateY( -50% ); color: #b0895a; font-size: 16px; width: 16px; height: 16px; }
+.tslgd-auto-connect { display: inline-flex; align-items: center; gap: 5px; }
+.tslgd-auto-connect .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.tslgd-auto-foot { margin: 18px 2px; color: #646970; font-size: 13px; }
+.tslgd-auto-foot a { margin-left: 6px; }
+@media ( max-width: 782px ) { .tslgd-auto-grid { grid-template-columns: 1fr; } }
+.tslgd-list-upsell { margin: 0 0 10px; }
+
+/* ---------- Lead list chips (Pro column on the Leads table) ---------- */
+.tslgd-list-chip {
+	display: inline-block;
+	padding: 2px 8px;
+	margin: 1px 2px 1px 0;
+	border-radius: 10px;
+	background: #eef2ff;
+	color: #3730a3;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.6;
+}
