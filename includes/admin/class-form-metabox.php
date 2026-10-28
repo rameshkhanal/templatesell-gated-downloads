@@ -2,10 +2,9 @@
 /**
  * Per-form configuration meta box on the gated-file edit screen.
  *
- * Renders three cards — Form Fields (sortable), Messages & Behavior, and
- * Notifications — that write a single `_tslgd_form` override bundle. Every
- * card is guarded by an "override" toggle; when off, the form inherits the
- * global Settings, so existing forms are unaffected.
+ * Three cards (Form Fields, Messages & Behavior, Notifications) write one
+ * `_tslgd_form` override bundle. Each card has an override toggle, when off
+ * the form uses the global Settings.
  *
  * @package Gated Downloads
  */
@@ -232,9 +231,6 @@ class Form_Metabox {
 
 	/**
 	 * Render disabled "Pro field type" teaser rows below the standard fields.
-	 *
-	 * These are point-of-need upsells: the user is configuring form fields and
-	 * sees exactly which extra input types Pro adds, with a one-click free trial.
 	 *
 	 * @return void
 	 */

@@ -225,9 +225,8 @@ class Lead_Repository {
 	/**
 	 * Additional WHERE clauses contributed by add-ons.
 	 *
-	 * Each entry is [ 'sql' => string, 'params' => array ]. The `sql` must
-	 * contain only fixed column names and %s/%d placeholders — every value has
-	 * to travel in `params` so it is bound by prepare().
+	 * Each entry is [ 'sql' => string, 'params' => array ]. The `sql` may only
+	 * contain fixed column names and %s/%d placeholders, values go in `params`.
 	 *
 	 * @since 1.3.0
 	 * @param array $args Query args.

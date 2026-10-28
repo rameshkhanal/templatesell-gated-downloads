@@ -2,10 +2,7 @@
 /**
  * Basic download email: sends each lead their download link.
  *
- * Free ships a clean, fixed message so delivery "just works"; the Pro
- * autoresponder replaces it with a fully customizable subject and body.
- * When Pro's autoresponder is enabled, this mailer steps aside so the lead
- * never receives two emails.
+ * Pro's autoresponder replaces it when enabled, so a lead never gets two emails.
  *
  * @package Gated Downloads
  */
@@ -50,7 +47,7 @@ class Lead_Mailer {
 		$email    = isset( $data['email'] ) ? sanitize_email( $data['email'] ) : '';
 		$file_url = isset( $data['file_url'] ) ? (string) $data['file_url'] : '';
 		if ( ! is_email( $email ) || '' === $file_url ) {
-			return; // No address, or a no-file subscribe form — nothing to deliver.
+			return; // Nothing to deliver.
 		}
 
 		// The Pro autoresponder sends a customizable version of this email;

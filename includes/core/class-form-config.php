@@ -2,13 +2,10 @@
 /**
  * Per-form configuration resolver.
  *
- * Each gated file (form) may store an optional `_tslgd_form` meta bundle that
- * overrides the global Settings for that form only. This class merges the
- * per-form overrides over the global defaults and returns the single *effective*
- * config used to render the modal, validate the submission, and deliver.
- *
- * A form with no meta (or with its override toggles off) resolves to the global
- * settings verbatim — so existing forms behave exactly as before.
+ * Merges the optional `_tslgd_form` meta bundle of a gated file over the
+ * global Settings and returns the effective config used to render, validate
+ * and deliver. With no meta, or override toggles off, the global settings
+ * are used as they are.
  *
  * @package Gated Downloads
  */

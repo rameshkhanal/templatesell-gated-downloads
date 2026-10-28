@@ -2,9 +2,6 @@
 /**
  * Onboarding: welcome notice, one-click demo content, and a setup checklist.
  *
- * Helps a new user reach their first captured lead in minutes, which is the
- * single biggest driver of retention and upgrades.
- *
  * @package TemplateSell\GatedDownloads
  */
 

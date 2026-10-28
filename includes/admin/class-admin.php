@@ -76,7 +76,7 @@ class Admin {
 		$this->growth->register_hooks();
 		( new File_Actions() )->register_hooks();
 
-		// Pro upsell (notice + upgrade page) — self-hides when Pro is active.
+		// Pro upsell (notice and upgrade page), hidden when Pro is active.
 		( new Pro\Upgrade_Page() )->register_hooks();
 		( new Pro\Pro_Notice() )->register_hooks();
 		( new Automation_Teaser() )->register_hooks();
@@ -244,8 +244,7 @@ class Admin {
 	}
 
 	/**
-	 * Slim views → opens → leads funnel for the last 30 days, with a
-	 * data-driven Pro nudge when a healthy sample converts poorly.
+	 * Views, opens and leads funnel for the last 30 days.
 	 *
 	 * @since 1.2.0
 	 * @return void
@@ -253,7 +252,7 @@ class Admin {
 	private function render_funnel_strip() {
 		$t = Stats_Repository::totals( 30 );
 		if ( $t['views'] < 1 ) {
-			return; // Nothing measured yet — say nothing rather than "0 views".
+			return; // Nothing measured yet.
 		}
 		$conv = Stats_Repository::conversion( $t );
 		?>
@@ -439,8 +438,7 @@ class Admin {
 	}
 
 	/**
-	 * Flatten a lead's `extra` JSON (standard extra fields + Pro custom fields)
-	 * into a single "Label: value; …" cell for CSV export.
+	 * Flatten a lead's `extra` JSON into one "Label: value; ..." cell for CSV export.
 	 *
 	 * @param array $r Lead row.
 	 * @return string

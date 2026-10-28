@@ -118,7 +118,7 @@ class Settings {
 				'required' => ! empty( $input['fields'][ $field ]['required'] ),
 			);
 		}
-		// Email should always be capturable — keep it enabled.
+		// Email is always captured, keep it enabled.
 		$clean['fields']['email']['enabled'] = true;
 
 		$clean['consent_enabled']          = ! empty( $input['consent_enabled'] );

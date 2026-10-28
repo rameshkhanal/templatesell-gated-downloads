@@ -2,9 +2,9 @@
 /**
  * PSR-4-ish autoloader mapping the Gated Downloads\ namespace to includes/.
  *
- * Namespace segments map to sub-directories (lower-cased); class names map to
- * WordPress-standard file names: Gated Downloads\Core\Lead_Repository →
- * includes/core/class-lead-repository.php
+ * Namespace segments map to lower-cased sub-directories, class names to
+ * WordPress-standard file names, e.g. Gated Downloads\Core\Lead_Repository
+ * becomes includes/core/class-lead-repository.php
  *
  * @package Gated Downloads
  */

@@ -1,8 +1,5 @@
 /**
- * Gated Downloads — Public JS (vanilla, no jQuery dependency).
- *
- * Handles modal open/close with full accessibility (focus trap, Esc, focus
- * restore) and submits the capture form to the REST endpoint.
+ * Gated Downloads public JS (vanilla, no jQuery): modal and capture form.
  */
 ( function ( data ) {
 	'use strict';
@@ -14,11 +11,7 @@
 	var ATTR_STORE = 'tslgd_attribution';
 
 	/**
-	 * Remember where this visit came from, once per session.
-	 *
-	 * Captured on the first page the visitor lands on, so attribution survives
-	 * them browsing around before they convert. Session-scoped, first-touch,
-	 * and never overwritten by a later internal page view.
+	 * Remember where this visit came from, once per session (first touch).
 	 */
 	function captureAttribution() {
 		var stored = readAttribution();
@@ -96,19 +89,15 @@
 	}
 
 	function initBeacons() {
-		// Any trigger bound to a gate — button or inline link. The Pro popup's
-		// hidden trigger carries no data-gate, so it is excluded by design.
+		// Any trigger bound to a gate. The Pro popup's hidden trigger has no data-gate.
 		document.querySelectorAll( '[data-modal][data-gate]' ).forEach( function ( trigger ) {
 			beacon( trigger.getAttribute( 'data-gate' ), 'view' );
 		} );
 	}
 
 	/**
-	 * Content Locker: swap locked placeholders for the real content.
-	 *
-	 * The page always renders locked (cache-safe); the protected HTML only
-	 * exists behind the REST unlock endpoint, which validates the signed
-	 * per-gate cookie issued by a successful form submission.
+	 * Content Locker: swap locked placeholders for the real content,
+	 * fetched from the REST unlock endpoint.
 	 */
 	function hasUnlockCookie( gateId ) {
 		return -1 !== ( '; ' + document.cookie ).indexOf( '; tslgd_unlock_' + gateId + '=' );
@@ -355,8 +344,7 @@
 	}
 
 	function showSuccess( form, body ) {
-		// If this gate locks content on the page, reveal it now — the submit
-		// response has just set the unlock cookie.
+		// Reveal locked content on the page, the response has set the unlock cookie.
 		var gateInput = form.querySelector( 'input[name="gate_id"]' );
 		if ( gateInput && document.querySelector( '.tslgd-lock[data-gate="' + gateInput.value + '"]' ) ) {
 			unlockLocks( gateInput.value );

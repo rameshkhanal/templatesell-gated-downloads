@@ -1,8 +1,4 @@
-/* =====================================================================
-   Gated Downloads — Public UI
-   Neutral, theme-agnostic. Restyle via the CSS custom properties below —
-   no !important needed.
-   ===================================================================== */
+/* Public UI. Restyle through the CSS custom properties below. */
 
 .tslgd-btn-wrap,
 .tslgd-overlay,
@@ -566,19 +562,7 @@
 	}
 }
 
-/* =====================================================================
-   Theme-compatibility hardening
-   Some themes and page builders (Twenty Twenty-Five, Elementor, etc.)
-   apply aggressive global rules to `button` and `svg`. Two of them break
-   the modal chrome: (1) forcing native `appearance` on <button>, so a
-   transparent button reveals the browser's accent-colored native widget
-   (e.g. a solid pink square where the close ✕ should be); (2) an
-   `svg { width: auto | max-width: 100% }` rule that collapses inline
-   flex-child icons to 0px wide, hiding the ✕ and download glyphs.
-   These scoped !important resets keep the modal intact under ANY theme
-   without touching the surrounding page. Only the plugin's own controls
-   are targeted, so nothing outside .tslgd-* is affected.
-   ===================================================================== */
+/* Reset button and svg rules that themes apply globally, scoped to .tslgd-* */
 
 /* Neutralize native / accent-colored button rendering on our controls. */
 .tslgd-btn-wrap .tslgd-btn,
@@ -613,8 +597,7 @@
 	color: #fff !important;
 }
 
-/* Inline icons: keep intrinsic size. Themes commonly set `svg{width:auto}` or
-   `img,svg{max-width:100%}`, which lets a flex-child icon shrink to 0px wide. */
+/* Keep inline icons at their intrinsic size. */
 .tslgd-overlay .tslgd-modal__icon svg {
 	width: 22px !important;
 	height: 22px !important;

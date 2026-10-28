@@ -134,8 +134,7 @@ class Frontend {
 	/**
 	 * Shortcode: [tslgd_link id="123"]Download the price list[/tslgd_link].
 	 *
-	 * Turns any wording — inline, mid-sentence, or an existing styled link —
-	 * into a gate trigger, for sites that don't want our button.
+	 * Turns any wording or existing link into a gate trigger.
 	 *
 	 * @since 1.3.0
 	 * @param array  $atts    Shortcode attributes.
@@ -399,10 +398,9 @@ class Frontend {
 			)
 		);
 
-		// Anonymous analytics beacon (view / open counters). Public by design:
-		// pages are often served from cache, so nonces would arrive stale.
-		// It accepts only whitelisted events for published gates and stores
-		// bare daily counters — no personal data.
+		// Anonymous analytics beacon (view / open counters). Public because pages
+		// are often cached and nonces would be stale. Accepts whitelisted events for
+		// published gates and stores daily counters only.
 		register_rest_route(
 			'tslgd/v1',
 			'/beacon',
@@ -632,8 +630,8 @@ class Frontend {
 		/**
 		 * Filter the successful-submission response sent back to the browser.
 		 *
-		 * Lets add-ons change what happens after capture — for example holding a
-		 * download back behind an email confirmation step.
+		 * Lets add-ons change what happens after capture, e.g. holding a download
+		 * back behind an email confirmation step.
 		 *
 		 * @since 1.3.0
 		 * @param array $response Response payload (file_url, delivery, message, redirect).
@@ -646,10 +644,8 @@ class Frontend {
 	/**
 	 * Align a download URL's scheme with the current request.
 	 *
-	 * Prevents a browser "insecure download blocked" warning when the page is
-	 * served over HTTPS but a same-site file URL was stored as HTTP (or vice
-	 * versa). Only same-host URLs are touched; external URLs the admin entered
-	 * are returned untouched so an http-only external host is never broken.
+	 * Avoids the "insecure download blocked" warning when an HTTPS page links
+	 * a same-site file stored as HTTP. External URLs are left alone.
 	 *
 	 * @param string $url Delivery URL.
 	 * @return string
@@ -674,9 +670,7 @@ class Frontend {
 	/**
 	 * Sanitize submitted traffic attribution.
 	 *
-	 * Only the five standard UTM parameters and an external referrer are kept;
-	 * anything else a client posts is discarded. Values are length-capped so a
-	 * crafted request cannot bloat the row.
+	 * Keeps the five UTM parameters and an external referrer, length-capped.
 	 *
 	 * @since 1.3.0
 	 * @param mixed $raw Raw `tslgd_attr` input.

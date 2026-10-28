@@ -2,9 +2,8 @@
 /**
  * The Elementor widget itself.
  *
- * Loaded only by Frontend\Elementor::register_widget(), which runs inside
- * Elementor's own registration hook — so \Elementor\Widget_Base is guaranteed
- * to exist by the time this file is parsed.
+ * Loaded from Frontend\Elementor::register_widget(), so \Elementor\Widget_Base
+ * exists by the time this file is parsed.
  *
  * @package Gated Downloads
  */

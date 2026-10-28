@@ -2,10 +2,9 @@
 /**
  * Conversion analytics storage: daily view/open/submit counters per gate.
  *
- * One aggregate row per gate per day — no per-visitor data, no cookies, no
- * personal information, so there is nothing here that touches privacy law.
- * Views and opens arrive via the public beacon endpoint (page caching makes
- * PHP-side counting unreliable); submits are counted from `tslgd_lead_created`.
+ * One aggregate row per gate per day, no per-visitor data. Views and opens
+ * arrive via the public beacon endpoint, submits are counted from
+ * `tslgd_lead_created`.
  *
  * @package Gated Downloads
  */
@@ -104,8 +103,7 @@ class Stats_Repository {
 		$table           = self::table();
 		$charset_collate = $wpdb->get_charset_collate();
 
-		// dbDelta adds the `downloads` column in place on upgrade; existing
-		// view/open/submit history is preserved.
+		// dbDelta adds the `downloads` column on upgrade and keeps existing history.
 		$sql = "CREATE TABLE {$table} (
 			gate_id   BIGINT UNSIGNED NOT NULL,
 			stat_date DATE            NOT NULL,
@@ -141,7 +139,7 @@ class Stats_Repository {
 			return;
 		}
 
-		// One literal statement per metric — no dynamic SQL at all.
+		// One literal statement per metric, no dynamic SQL.
 		$statements = array(
 			'views'     => 'INSERT INTO %i (gate_id, stat_date, views) VALUES (%d, %s, 1) ON DUPLICATE KEY UPDATE views = views + 1',
 			'opens'     => 'INSERT INTO %i (gate_id, stat_date, opens) VALUES (%d, %s, 1) ON DUPLICATE KEY UPDATE opens = opens + 1',

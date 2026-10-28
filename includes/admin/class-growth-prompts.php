@@ -27,9 +27,7 @@ class Growth_Prompts {
 	const SYNC_THRESHOLD    = 5;
 
 	/**
-	 * Lead counts at which a previously dismissed upsell earns another showing.
-	 * Each milestone re-opens the card once; dismissing it again waits for the
-	 * next milestone, and after the last one it stays gone for good.
+	 * Lead counts at which a dismissed upsell is shown again.
 	 *
 	 * @since 1.1.2
 	 * @var int[]
@@ -158,11 +156,7 @@ class Growth_Prompts {
 		exit;
 	}
 
-	/* --------------------------------------------------------------------- *
-	 * "Cost of not upgrading" sync nudge — a slim strip that quantifies the
-	 * leads the site is handling by hand, shown before the bigger upsell card
-	 * kicks in so there is a graduated ladder rather than two stacked CTAs.
-	 * --------------------------------------------------------------------- */
+	/* Sync nudge strip. */
 
 	/**
 	 * Render the quantified "these leads weren't auto-synced" nudge.

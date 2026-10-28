@@ -1,10 +1,9 @@
 <?php
 /**
- * "Upgrade to Pro" admin page + highlighted menu item.
+ * "Upgrade to Pro" admin page and highlighted menu item.
  *
- * Shown only while the Gated Downloads Pro add-on is inactive. Pure upsell: it links
- * out to the product page and lists what Pro adds. WordPress.org-friendly —
- * no nag on non-Gated Downloads screens, nothing misleading.
+ * Shown only while Pro is inactive. Links to the product page and lists
+ * what Pro adds.
  *
  * @package Gated Downloads
  */
@@ -42,9 +41,8 @@ class Upgrade_Page {
 	/**
 	 * Is the Gated Downloads Pro add-on active?
 	 *
-	 * Read through the free plugin's public signal so it stays true no matter how
-	 * Pro announces itself. Safe to call inside admin_menu/admin_notices — by then
-	 * plugins_loaded (where Pro sets the filter) has already run.
+	 * Uses the free plugin's public signal. Safe inside admin_menu and
+	 * admin_notices, plugins_loaded has already run.
 	 *
 	 * @return bool
 	 */
@@ -129,11 +127,9 @@ class Upgrade_Page {
 	}
 
 	/**
-	 * Tint the "Upgrade to Pro" menu item so it stands out (like core add-on menus).
+	 * Tint the "Upgrade to Pro" menu item.
 	 *
-	 * Attached as an inline style to the core admin stylesheet instead of being
-	 * printed directly, so it goes through the standard enqueue pipeline. The
-	 * rule targets the admin menu, which is present on every admin screen.
+	 * Added as an inline style on the core admin stylesheet.
 	 *
 	 * @return void
 	 */

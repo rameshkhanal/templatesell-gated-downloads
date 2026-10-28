@@ -2,10 +2,8 @@
 /**
  * Elementor integration.
  *
- * Registers a native Gated Downloads widget when Elementor is active. The
- * widget class extends \Elementor\Widget_Base, so it lives in its own file that
- * is required only inside the registration callback — sites without Elementor
- * never load or autoload it.
+ * Registers the Gated Downloads widget when Elementor is active. The widget
+ * file is only required inside the registration callback.
  *
  * @package Gated Downloads
  */

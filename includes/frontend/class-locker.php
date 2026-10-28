@@ -2,11 +2,10 @@
 /**
  * Content Locker: hide post content behind the capture form.
  *
- * The locked HTML is never printed in the page source. The shortcode renders a
- * placeholder with the standard gate trigger button; after a successful form
- * submission a signed per-gate cookie is set and the locked HTML is fetched
- * over REST and swapped in. Because the page itself always renders locked,
- * full-page caching can never leak the protected content.
+ * The shortcode renders a placeholder with the gate trigger button. After a
+ * successful submission a signed per-gate cookie is set and the locked HTML
+ * is fetched over REST. The page always renders locked, so full-page caching
+ * cannot leak the content.
  *
  * @package Gated Downloads
  */
@@ -78,9 +77,8 @@ class Locker {
 	/**
 	 * Set the unlock cookie after a successful submission for a gate.
 	 *
-	 * Deliberately not HttpOnly: the front-end JS reads only the cookie's
-	 * presence (never trusts its value) to know it should request the
-	 * unlocked content; the server re-validates the token on every request.
+	 * Not HttpOnly on purpose: the JS only checks that it exists, and the
+	 * server validates the token on every request.
 	 *
 	 * @param int $gate_id Gate post ID.
 	 * @return void
@@ -148,8 +146,8 @@ class Locker {
 	/**
 	 * Shortcode: [tslgd_lock id="123"]protected content[/tslgd_lock].
 	 *
-	 * Always renders the locked placeholder — the protected HTML is only ever
-	 * delivered by the REST unlock endpoint, so cached pages stay safe.
+	 * Always renders the locked placeholder, the content comes from the REST
+	 * unlock endpoint.
 	 *
 	 * @param array  $atts    Shortcode attributes.
 	 * @param string $content Enclosed (protected) content.
@@ -221,9 +219,8 @@ class Locker {
 	/**
 	 * Register POST tslgd/v1/unlock.
 	 *
-	 * Public route by design: pages are often served from cache so a nonce
-	 * would arrive stale. Authorization is the signed per-gate unlock cookie,
-	 * which only the submission endpoint issues.
+	 * Public because cached pages would have stale nonces. Authorization is
+	 * the signed per-gate unlock cookie.
 	 *
 	 * @return void
 	 */

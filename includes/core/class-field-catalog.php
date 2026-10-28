@@ -2,13 +2,13 @@
 /**
  * Standard form-field catalog.
  *
- * Defines the fixed set of capture fields the free plugin can place on a form
- * (per-form, in any order). Each field declares its input type, label,
- * autocomplete token, and where its value is stored: a dedicated leads-table
- * column ("column") or the shared JSON `extra` payload ("extra").
+ * The fixed set of capture fields the free plugin can place on a form. Each
+ * field declares its input type, label, autocomplete token, and where its
+ * value is stored: a leads-table column ("column") or the JSON `extra`
+ * payload ("extra").
  *
- * Pro extends this via the `tslgd_field_catalog` filter to register
- * additional field types (dropdown, textarea, checkbox, …).
+ * Pro adds field types (dropdown, textarea, checkbox) via the
+ * `tslgd_field_catalog` filter.
  *
  * @package Gated Downloads
  */
@@ -44,7 +44,7 @@ class Field_Catalog {
 				'autocomplete' => 'email',
 				'placeholder'  => '',
 				'store'        => 'column',
-				'locked'       => true, // Always present — a lead needs an address.
+				'locked'       => true, // Always present.
 			),
 			'phone'     => array(
 				'type'         => 'tel',

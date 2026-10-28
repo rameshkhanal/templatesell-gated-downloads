@@ -2,8 +2,7 @@
 /**
  * Per-post override for the auto-inserted download button.
  *
- * Appears only on the post types automatic placement targets, and only while
- * the feature is switched on — no clutter on sites that don't use it.
+ * Shown only on post types that automatic placement targets.
  *
  * @package Gated Downloads
  */

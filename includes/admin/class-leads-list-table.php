@@ -108,9 +108,9 @@ class Leads_List_Table extends \WP_List_Table {
 		/**
 		 * Filter the rendered content of a Leads table cell.
 		 *
-		 * Add-ons that registered a column via 'tslgd_leads_columns' return their
-		 * own markup here. The value passed in is already escaped; anything a
-		 * callback returns is printed as-is, so callbacks must escape their output.
+		 * Add-ons that register a column via 'tslgd_leads_columns' return their own
+		 * markup here. The value passed in is already escaped, callbacks must
+		 * escape their own output.
 		 *
 		 * @since 1.3.0
 		 * @param string $value       Escaped cell value ('' for unknown columns).
@@ -138,8 +138,7 @@ class Leads_List_Table extends \WP_List_Table {
 	}
 
 	/**
-	 * Details column: the captured extra standard fields (Company, Job Title, …)
-	 * plus any Pro custom fields stored in the shared JSON payload.
+	 * Details column: extra standard fields plus any Pro custom fields.
 	 *
 	 * @param array $item Row.
 	 * @return string

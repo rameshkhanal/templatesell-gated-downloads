@@ -1,6 +1,6 @@
 <?php
 /**
- * Row actions for gated files — currently a one-click "Duplicate".
+ * Row actions for gated files (Duplicate).
  *
  * @package TemplateSell\GatedDownloads
  */

@@ -2,11 +2,8 @@
 /**
  * "Automation" teaser screen.
  *
- * A discovery surface that shows the real integration UI Pro unlocks —
- * Mailchimp, Brevo, webhooks, an autoresponder — as visible-but-locked cards.
- * The controls are inert; each "Connect" starts the no-card free trial. Only
- * registered while the Pro add-on is inactive (Pro replaces it with the working
- * screen).
+ * Shows the integrations Pro unlocks (Mailchimp, Brevo, webhooks,
+ * autoresponder) as locked cards. Only registered while Pro is inactive.
  *
  * @package Gated Downloads
  */

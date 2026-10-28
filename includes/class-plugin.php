@@ -53,7 +53,7 @@ final class Plugin {
 	}
 
 	/**
-	 * Private constructor — use instance().
+	 * Private constructor, use instance().
 	 */
 	private function __construct() {}
 
@@ -79,7 +79,7 @@ final class Plugin {
 		// Editor block (registers in both admin and front-end contexts).
 		( new Block() )->register_hooks();
 
-		// Elementor widget — the hook only ever fires when Elementor is active.
+		// Elementor widget, the hook only fires when Elementor is active.
 		( new Elementor() )->register_hooks();
 
 		// Admin only.
@@ -87,8 +87,7 @@ final class Plugin {
 			( new Admin() )->register_hooks();
 		}
 
-		// Front-end only (REST requests also run this branch, which the
-		// Locker's unlock endpoint relies on).
+		// Front-end only. REST requests also run this branch, which the Locker needs.
 		if ( ! is_admin() ) {
 			$frontend = new Frontend();
 			$frontend->register_hooks();

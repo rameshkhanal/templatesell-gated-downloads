@@ -78,8 +78,8 @@ class Assets {
 	}
 
 	/**
-	 * Version string for a bundled asset — its file modification time, so any
-	 * edit busts the browser cache. Falls back to the plugin version.
+	 * Version string for a bundled asset: its file modification time, or the
+	 * plugin version as a fallback.
 	 *
 	 * @param string $rel_path Path relative to the plugin root.
 	 * @return string
@@ -117,9 +117,7 @@ class Assets {
 			$vars[] = '--tslgd-header-to:' . self::shade( $header, 0.14 );
 		}
 
-		// Target the same selectors public.css scopes the variables to
-		// (.tslgd-btn-wrap, .tslgd-overlay, .tslgd-lock) so this override wins
-		// by source order — a :root override would be shadowed by that closer scope.
+		// Same selectors public.css scopes the variables to, so this wins by source order.
 		return '.tslgd-btn-wrap,.tslgd-overlay,.tslgd-lock{' . implode( ';', $vars ) . '}';
 	}
 

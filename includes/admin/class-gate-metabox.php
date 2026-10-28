@@ -115,7 +115,7 @@ class Gate_Metabox {
 			echo '<br /><span class="tslgd-perf-conv tslgd-perf-none">' . esc_html__( 'no views yet', 'templatesell-gated-downloads' ) . '</span>';
 		}
 
-		// All-time deliveries — a different question from "leads in 30 days".
+		// All-time deliveries.
 		$downloads = Stats_Repository::download_count( $post_id );
 		if ( $downloads > 0 ) {
 			printf(
@@ -214,9 +214,8 @@ class Gate_Metabox {
 	}
 
 	/**
-	 * Contextual Pro tips under the file field: the shareable-link risk and the
-	 * subscribe-mode → email-marketing sync. Shown only while Pro is inactive,
-	 * and only on this plugin's own edit screen (wp.org-friendly).
+	 * Pro tips under the file field. Shown only while Pro is inactive,
+	 * on this plugin's own edit screen.
 	 *
 	 * @since 1.1.2
 	 * @return void

@@ -1,12 +1,9 @@
 <?php
 /**
- * Deactivation retention intercept.
+ * Deactivation modal that offers the Pro trial.
  *
- * When the user clicks "Deactivate" on the free plugin's row, a lightweight
- * modal offers the no-card Pro trial before letting them proceed. Nothing is
- * transmitted anywhere — it is a purely client-side interstitial, so it stays
- * WordPress.org-friendly (no phone-home, no data collection). Only wired up
- * while the Pro add-on is inactive.
+ * Client-side only, nothing is sent anywhere. Only wired up while Pro is
+ * inactive.
  *
  * @package Gated Downloads
  */

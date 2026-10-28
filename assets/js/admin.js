@@ -1,13 +1,11 @@
 /**
- * Gated Downloads — Admin JS.
- *
- * Handles the gated-file source toggle and the Media Library file picker.
+ * Gated Downloads admin JS: file source toggle and Media Library picker.
  */
 ( function ( $, cfg ) {
 	'use strict';
 
 	$( function () {
-		// Brand color pickers (Settings → Appearance).
+		// Brand color pickers (Settings, Appearance).
 		if ( $.fn.wpColorPicker ) {
 			$( '.tslgd-color' ).wpColorPicker();
 		}
@@ -100,9 +98,8 @@
 			} );
 		}
 
-		// Enable/disable a card's controls based on its "override" toggle. The
-		// section is only visually disabled — inputs still post, but the resolver
-		// ignores them unless the matching override flag is set.
+		// Enable or disable a card's controls from its override toggle.
+		// Inputs still post, the resolver ignores them unless the override flag is set.
 		function syncSection( toggle ) {
 			var $t = $( toggle );
 			var name = $t.data( 'toggle' );

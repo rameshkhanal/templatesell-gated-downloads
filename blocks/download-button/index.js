@@ -1,8 +1,8 @@
 /**
- * Gated Downloads — "Download" block (editor script, no build step required).
+ * Gated Downloads "Download" block (editor script, no build step).
  *
- * Renders a settings panel to pick a gated file + button label. The front-end
- * output is produced server-side (see class-block.php render callback).
+ * Settings panel for the gated file and button label. Front-end output is
+ * rendered by the PHP callback in class-block.php.
  */
 ( function ( blocks, element, blockEditor, components, i18n ) {
 	'use strict';
@@ -72,7 +72,7 @@
 			return el( element.Fragment, {}, controls, preview );
 		},
 		save: function () {
-			// Dynamic block — rendered by PHP.
+			// Dynamic block, rendered by PHP.
 			return null;
 		}
 	} );

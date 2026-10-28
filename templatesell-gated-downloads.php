@@ -40,11 +40,7 @@ define( 'TSLGD_BASENAME', plugin_basename( __FILE__ ) );
 define( 'TSLGD_MIN_PHP', '7.4' );
 define( 'TSLGD_MIN_WP', '6.2' );
 
-/*
- * ---------------------------------------------------------------------------
- * Environment guard — fail gracefully on unsupported PHP/WP.
- * ---------------------------------------------------------------------------
- */
+// Environment guard for unsupported PHP/WP.
 if ( version_compare( PHP_VERSION, TSLGD_MIN_PHP, '<' ) ) {
 	add_action(
 		'admin_notices',
@@ -62,11 +58,7 @@ if ( version_compare( PHP_VERSION, TSLGD_MIN_PHP, '<' ) ) {
 	return;
 }
 
-/*
- * ---------------------------------------------------------------------------
- * Autoloader — maps the Gated Downloads\ namespace to includes/ (WPCS file names).
- * ---------------------------------------------------------------------------
- */
+// Autoloader for the Gated Downloads\ namespace (WPCS file names).
 require_once TSLGD_PATH . 'includes/class-autoloader.php';
 TemplateSell\GatedDownloads\Autoloader::register();
 

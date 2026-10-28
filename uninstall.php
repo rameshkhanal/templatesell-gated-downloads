@@ -2,9 +2,7 @@
 /**
  * Gated Downloads uninstall handler.
  *
- * Runs when the user deletes the plugin from the Plugins screen. Data is only
- * removed when the site owner explicitly opted in via the settings — otherwise
- * leads and gated files are preserved.
+ * Data is removed only if the site owner opted in via the settings.
  *
  * @package Gated Downloads
  */

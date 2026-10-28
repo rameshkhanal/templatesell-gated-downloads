@@ -100,10 +100,7 @@ class Post_Type {
 	}
 
 	/**
-	 * Register the generic, user-defined category taxonomy.
-	 *
-	 * No terms are hardcoded — site owners create whatever categories fit their
-	 * content (e.g. Ebooks, Whitepapers, Price Lists, Brochures, Resources…).
+	 * Register the user-defined category taxonomy (no terms are preset).
 	 *
 	 * @return void
 	 */

@@ -2,9 +2,8 @@
 /**
  * Auto-insert: place a gate button in post content without a shortcode.
  *
- * Appends (or prepends) the standard trigger button to matching posts, so a
- * site can gate hundreds of posts from one setting instead of pasting a
- * shortcode into each one. Each post can opt out or choose a different file.
+ * Appends or prepends the trigger button to matching posts. Each post can
+ * opt out or choose a different file.
  *
  * @package Gated Downloads
  */
@@ -77,8 +76,7 @@ class Auto_Insert {
 			return $content;
 		}
 
-		// A post that already shows this gate by shortcode or block gets nothing
-		// extra — no accidental duplicate buttons.
+		// Skip posts that already show this gate, to avoid duplicate buttons.
 		if ( $this->already_has_gate( $post_id, $gate_id ) ) {
 			return $content;
 		}
@@ -105,8 +103,7 @@ class Auto_Insert {
 		if ( empty( $settings['auto_insert_enabled'] ) ) {
 			return false;
 		}
-		// Only the real post body of a singular view — never archives, feeds,
-		// excerpts, or secondary loops (widgets, related-posts blocks).
+		// Only the main post body of a singular view, not archives, feeds or secondary loops.
 		if ( ! is_singular() || ! in_the_loop() || ! is_main_query() || is_feed() ) {
 			return false;
 		}

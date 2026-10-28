@@ -1,6 +1,4 @@
-/* =====================================================================
-   Gated Downloads — Admin UI (card-based layout)
-   ===================================================================== */
+/* Admin UI */
 
 .tslgd-wrap {
 	max-width: 1100px;
@@ -308,9 +306,7 @@
 	}
 }
 
-/* =====================================================================
-   Pro upsell — inline card (rendered inside the plugin pages)
-   ===================================================================== */
+/* Pro upsell: inline card */
 .tslgd-upsell {
 	border: 1px solid #cfe0ff;
 	background: linear-gradient( 180deg, #f7faff, #fff );
@@ -405,9 +401,7 @@
 	}
 }
 
-/* =====================================================================
-   Pro upsell — Upgrade to Pro page
-   ===================================================================== */
+/* Pro upsell: Upgrade to Pro page */
 .tslgd-upgrade {
 	max-width: 1080px;
 }
@@ -655,16 +649,14 @@
 	pointer-events: none;
 }
 
-/* Leads list — Details column */
+/* Leads list, Details column */
 .tslgd-lead-extra {
 	display: inline-block;
 	font-size: 12px;
 	line-height: 1.5;
 }
 
-/* -------------------------------------------------------------------------
- * 1.1.0 — onboarding, checklist, stat tiles, growth prompts
- * ---------------------------------------------------------------------- */
+/* Onboarding, checklist, stat tiles, growth prompts */
 
 /* Welcome notice */
 .tslgd-welcome { border-left-color: #2563eb; padding: 6px 12px 10px; }
@@ -716,7 +708,7 @@
 	.tslgd-leads-head .tslgd-leads-search { flex: 1 1 auto; }
 }
 
-/* Categories (taxonomy) screen — card-style the add-form and the term list */
+/* Categories screen */
 body.taxonomy-tslgd_category #col-container { margin-top: 12px; }
 body.taxonomy-tslgd_category #col-left .form-wrap,
 body.taxonomy-tslgd_category #col-right .col-wrap {
@@ -739,11 +731,9 @@ body.taxonomy-tslgd_category #col-right .wp-list-table thead th { border-bottom:
 /* Trim the extra gap above the inline "Upgrade to Pro" card under the files list */
 body.post-type-tslgd_file .tablenav.bottom { height: auto; }
 
-/* -------------------------------------------------------------------------
- * Conversion surfaces — sync nudge, locked field teasers, automation page
- * ---------------------------------------------------------------------- */
+/* Sync nudge, locked field teasers, automation page */
 
-/* Conversion analytics — files-list column + leads-page funnel strip */
+/* Files list column and leads page funnel strip */
 .tslgd-perf-leads { font-weight: 600; color: #1d2327; }
 .tslgd-perf-conv { color: #50575e; font-size: 12px; }
 .tslgd-perf-none { color: #9aa1a9; font-style: italic; }

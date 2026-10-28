@@ -2,10 +2,8 @@
 /**
  * Inline "upgrade to Pro" upsell card.
  *
- * Rendered inside the Gated Downloads admin pages (Leads + Settings) via the
- * `tslgd_admin_upsell` action, styled as one of the plugin's own cards, and
- * only while the Pro add-on is inactive. Page content — not a floating nag — so
- * it stays WordPress.org-friendly.
+ * Shown on the Leads and Settings pages via the `tslgd_admin_upsell` action,
+ * only while Pro is inactive.
  *
  * @package Gated Downloads
  */
